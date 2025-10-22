@@ -5,7 +5,7 @@ all: test-mergesort
 
 #This builds an executable 
 test-mergesort: test-mergesort.o mergesort.o
-	$(CC) $(CFLAGS) -o $@ $?
+	$(CC) $(CFLAGS) -o $@ $^
 
 .PHONY: clean
 clean:

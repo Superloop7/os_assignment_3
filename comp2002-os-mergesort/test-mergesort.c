@@ -105,24 +105,49 @@ int check_if_sorted(int A[], int n)
 	return TRUE;
 }
 
-/* this function prints A, but we only print the first 100 elements */
-void printA(void){
+/* this function prints A safely: print up to first 100 elements */
+void printA(int *A, int size){
 	int i;
+	int limit;
+
+	if (A == NULL || size <= 0) {
+		printf("Array A: (empty)\n");
+		return;
+	}
+
+	if ( size <= 100 ) {
+		limit = size;
+	} else {
+		limit = 100;
+	}
+
 	printf("Array A:");
-	/* FIXME: we assume the size of A is at least 100, and this will fail if it is lower than 100 */
-	for(i=0;i<100;i++){
-		printf(" %d",A[i]);
+	for(i = 0; i < limit; i++){
+		printf(" %d", A[i]);
 	}
 	printf("\n");
 }
 
-/* this function prints B, but we only print the first 100 elements */
-void printB(void){
+
+/* this function prints B safely: print up to first 100 elements */
+void printB(int *B, int size){
 	int i;
+	int limit;
+
+	if (B == NULL || size <= 0) {
+		printf("Array B: (empty)\n");
+		return;
+	}
+
+	if ( size <= 100 ) {
+		limit = size;
+	} else {
+		limit = 100;
+	}
+	
 	printf("Array B:");
-	/* FIXME: we assume the size of B is at least 100, and this will fail if it is lower than 100 */
-	for(i=0;i<100;i++){
-		printf(" %d",B[i]);
+	for(i = 0; i < limit; i++){
+		printf(" %d", B[i]);
 	}
 	printf("\n");
 }
@@ -159,8 +184,8 @@ int main(int argc, char **argv) {
 	sorting_time = getMilliSeconds() - start_time;
 
 	// print the array, for debugging purpose.
-	//printA();
-	//printB();
+	// printA(A, n);
+	// printB(B, n);
 	// print results if correctly sorted otherwise cry foul and exit
 	if (check_if_sorted(A,n)) {
 		printf("Sorting %d elements took %4.2lf seconds.\n", n,  sorting_time/1000.0);
