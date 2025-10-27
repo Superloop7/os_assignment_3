@@ -2,7 +2,7 @@ README
 
 ## Project 3 / Concurrency Mergesort Alogrithm
 
-* Authors: ZHAOXUAN GENG, JIAHAN YANG
+* Authors: ZHAOXUAN GENG, JIAHAN YANG, YAO CHU
 * Group name: Assignment 3 Groups 13
 
 ## Overview
