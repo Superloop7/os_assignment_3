@@ -101,3 +101,12 @@ And the cutoff at two level also don't fit our expect, it give 7 times speedup
 - Performance tuning: We observed diminishing returns beyond certain depths (over 3) due to overhead and memory bandwidth limits. Choosing a cutoff near log2(cores) often works well, but the optimal choice depends on CPU, cache, and input size.
 - Learning: Practiced pthread creation/join patterns, avoiding data races by partitioning disjoint subarrays and merging after joins. Reviewed the cost of copying during merge and how it interacts with caches under parallelism.
 - Diffcult: Understanding the recursive structure proved to be the most challenging aspect of the project(`void * parallel_mergesort `). The multithreaded implementation required each thread to independently execute its own instance of the sorting routine, which led to a non-intuitive execution flow—particularly in the sequence where my_mergesort is invoked before the final merging step. Designing and implementing the correct execution order within my_mergesort took considerable effort and careful reasoning.
+
+## Group members reflection
+
+JIAHAN YANG:
+    The project gave me a deeper understanding of how multithreading can improve the performance of recursive sorting algorithms. The implementation of pthread_create and pthread_join helped me understand how threads interact. You also learned about the importance of synchronization and memory management. You also learned to control the number of threads by using cutoff levels. Without it, the thread cost quickly becomes more complex than the sorting work itself, leading to progressively inefficiencies. I also understood the recursive behavior of parallel_mergesort. Each thread is essentially running its own recursive process, and tracking the execution flow takes some time for reasoning. Make sure to merge in the correct order after all child threads have finished.
+
+YAO CHU:
+    This project helped me understand how using threads can make sorting faster. By using pthread_create and pthread_join, I learned how threads work together and wait for each other. I also found that if we make too many threads, it becomes slower, so we need to set a cutoff level to control it.
+    I learned that the recursive part of parallel_mergesort is not easy to follow because each thread runs its own sort. It took time to make sure all threads finished before merging the results. From this task, I learned more about thread control, memory use, and program speed.
